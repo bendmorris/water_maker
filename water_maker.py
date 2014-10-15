@@ -10,24 +10,9 @@ SX = 4
 SY = 4
 MOVES = 4
 
-
-def partition(n,k,l=1):
-    '''n is the integer to partition, k is the length of partitions'''
-    if k < 1:
-        raise StopIteration
-    elif k == 1:
-        if n >= 1:
-            yield [n]
-        raise StopIteration
-    for i in range(l,n+1):
-        for result in partition(n-i,k-1, i):
-            yield [i]+result
-
-
 image = pygame.image.load(input_file)
 surf = pygame.Surface((SX*ST, SY*ST))
 tiles = SX*SY
-partitions = [x for x in partition(ST, tiles)]
 
 movement = [[0 for _ in range(tiles)] for _ in range(ST)]
 
